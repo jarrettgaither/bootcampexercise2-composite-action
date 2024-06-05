@@ -1,0 +1,17 @@
+name: 'String generator'
+inputs: 
+  user-string:
+    required: true
+    default: 'This is the default string'
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: echo ${{USER_STRING}} > my_string.txt
+      env:
+        USER_STRING: ${{inputs.user-string}}
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: my_string
+        path: my_string.txt
