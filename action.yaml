@@ -7,7 +7,7 @@ runs:
   using: "composite"
   steps:
     - name: Input to artifact
-      run: echo $USER_STRING > my_string.txt
+      run: echo "$USER_STRING" > my_string.txt
       shell: bash
       env:
         USER_STRING: ${{inputs.user-string}}
